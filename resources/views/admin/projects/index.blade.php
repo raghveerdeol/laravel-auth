@@ -7,6 +7,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
+            <a href="{{ route('admin.Projects.create') }}" class="btn btn-primary btn-l my-3">Add new project</a>
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
@@ -34,6 +35,7 @@
                         <td>{{ $project->website_url }}</td>
                         <td>
                             <a href="{{ route('admin.Projects.show', $project) }}" class="btn btn-primary btn-sm">Show</a>
+                            <a href="{{ route('admin.Projects.edit', $project) }}" class="btn btn-success btn-sm">Edit</a>
                         </td>
                     </tr>
                     @endforeach
