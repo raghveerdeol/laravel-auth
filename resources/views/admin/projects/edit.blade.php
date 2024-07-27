@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-    Add new project
+    Edit project
 @endsection
 
 @section('content')
@@ -16,10 +16,11 @@
                 </ul>
             </div>
             @endif
-            <form action="{{ route('admin.Projects.store') }}" method="post">
+            <form  method="POST" action="{{ route('admin.Projects.show', $project) }}">
+                @method('PUT')
                 @csrf
                 <label for="title">Title: </label>
-                <input class="form-control" type="text" placeholder="Title" aria-label="Title" name="title" id="title" value="{{ old('title') }}">
+                <input class="form-control" type="text" placeholder="Title" aria-label="Title" name="title" id="title" value="{{ old('title', $project->title) }}">
 
                 <label for="language">Language: </label>
                 <input class="form-control" type="text" placeholder="Language" aria-label="Language" name="language" id="language" value="{{ old('language') }}">
