@@ -50,3 +50,7 @@
     </div>
 </div>
 @endsection
+
+@section('script-section')
+
+@endsection

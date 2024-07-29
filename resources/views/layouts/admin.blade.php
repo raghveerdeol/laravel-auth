@@ -23,5 +23,7 @@
             @yield('content')
         </main>
     </div>
+
+    @yield('script-section')
 </body>
 </html>
