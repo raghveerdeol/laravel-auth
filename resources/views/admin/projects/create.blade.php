@@ -16,7 +16,7 @@
                 </ul>
             </div>
             @endif
-            <form action="{{ route('admin.Projects.store') }}" method="post">
+            <form action="{{ route('admin.projects.store') }}" method="post">
                 @csrf
                 <label for="title">Title: </label>
                 <input class="form-control" type="text" placeholder="Title" aria-label="Title" name="title" id="title" value="{{ old('title') }}">

@@ -42,17 +42,17 @@ class ProjectController extends Controller
             'website_url' => 'required',
         ]);
         $newProject = Project::create($data);
-        return redirect()->route('admin.Projects.show', $newProject);
+        return redirect()->route('admin.projects.show', $newProject);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $project)
+    public function show(Project $project)
     {
-        $singleProject = Project::find($project);
-
-        return view('admin.projects.show', compact('singleProject'));
+        // $singleProject = Project::find($id);
+        // dd($project);
+        return view('admin.projects.show', compact('project'));
     }
 
     /**
@@ -60,6 +60,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
+        // $singleProject = Project::find($id);
         return view('admin.projects.edit', compact('project'));
     }
 
@@ -79,14 +80,15 @@ class ProjectController extends Controller
             'website_url' => 'required',
         ]);
         $project->update($data);
-        return redirect()->route('admin.Projects.show', $project);
+        return redirect()->route('admin.projects.show', $project);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Project $project)
     {
-        //
+        $project->delete();
+        return redirect()->route('admin.projects.index');
     }
 }
