@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreProjectRequest;
+use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
 
@@ -22,27 +24,19 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.create');
+        $project = new Project();
+        return view('admin.projects.create', compact('project'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreProjectRequest $request)
     {
-        $data = $request->all();
+        $data = $request->validated();
 
-        $request->validate([
-            'title' => 'required|max:40',
-            'language' => 'required|max:60',
-            'content' => 'required',
-            'started_on' => 'required|date',
-            'finished' => 'required|boolean',
-            'image_url' => 'required',
-            'website_url' => 'required',
-        ]);
-        $newProject = Project::create($data);
-        return redirect()->route('admin.projects.show', $newProject);
+        $project = Project::create($data);
+        return redirect()->route('admin.projects.show', $project);
     }
 
     /**
@@ -67,18 +61,9 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Project $project)
+    public function update(UpdateProjectRequest $request, Project $project)
     {
-        $data = $request->all();
-        $request->validate([
-            'title' => 'required|max:40',
-            'language' => 'required|max:60',
-            'content' => 'required',
-            'started_on' => 'required|date',
-            'finished' => 'required|boolean',
-            'image_url' => 'required',
-            'website_url' => 'required',
-        ]);
+        $data = $request->validated();
         $project->update($data);
         return redirect()->route('admin.projects.show', $project);
     }
