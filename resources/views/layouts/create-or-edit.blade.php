@@ -37,7 +37,7 @@
                         </ul>
                     </div>
                     @endif --}}
-                    <form  method="POST" action="@yield('form-action')">
+                    <form  method="POST" action="@yield('form-action')" class="form-selector">
                         @yield('form-method')
                         @csrf
                         <label for="title">Title: </label>
@@ -112,5 +112,6 @@
     <footer>
         @yield('footer-content')
     </footer>
+    @yield('scripts-content')
 </body>
 </html>

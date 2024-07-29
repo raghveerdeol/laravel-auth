@@ -12,3 +12,6 @@
     @method('Put')
 @endsection
 
+@section('scripts-content')
+    @vite('resources/js/edit-alert.js')
+@endsection
