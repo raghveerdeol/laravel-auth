@@ -57,7 +57,7 @@
                         @enderror
 
                         <label for="content">Content: </label>
-                        <input class="form-control" type="text" placeholder="Content" aria-label="Content" name="content" id="content" value="{{ old('content', $project->content) }}">
+                        <textarea class="form-control" type="text" placeholder="Content" aria-label="Content" name="content" id="content" rows="8">{{ old('content', $project->content) }}</textarea>
                         @error('content')
                         <div class="alert alert-danger my-2">
                             {{ $message }}
@@ -102,6 +102,7 @@
                         @enderror
 
                         <input type="submit" class="btn btn-primary mb-3" value="@yield('title')">
+                        <input type="reset" class="btn btn-warning mb-3" value="Reset">
                     </form>
                 </div>
             </div>
