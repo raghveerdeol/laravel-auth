@@ -20,7 +20,7 @@
                     @endif
                     <a href="{{ $project->website_url }}" class="btn btn-primary">Website</a>
                     <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-success btn-sm">Edit</a>
-                    <form action="{{ route('admin.projects.destroy', $project) }}" method="POST" class="d-inline-block">
+                    <form action="{{ route('admin.projects.destroy', $project) }}" method="POST" class="d-inline-block form-deleter">
                         @method('delete')
                         @csrf
                         <input type="submit" value="Delete" class="btn btn-warning btn-sm">
@@ -32,3 +32,8 @@
     </div>
 </div>
 @endsection
+
+@section('script-section')
+    @vite('resources/js/delete-alert.js')
+@endsection
+
